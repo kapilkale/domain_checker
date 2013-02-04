@@ -1,7 +1,7 @@
 class Name < ActiveRecord::Base
   # attr_accessible :title, :body
   def self.schedule_jobs
-    file = File.open('word_list.txt')
+    file = File.open("#{Rails.root}/lib/word_list.txt")
     file.each_line do |word|
       Name.delay.create_or_update(word)
     end
